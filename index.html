@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0d10" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="JobClock" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>JobClock</title>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">WORK TIMER</p>
+        <h1>JobClock</h1>
+      </div>
+      <div class="status-pill" id="statusPill">Ready</div>
+    </header>
+
+    <section class="card timer-card">
+      <div class="timer" id="timer">00:00:00</div>
+
+      <label class="field">
+        <span>Customer / Job</span>
+        <input id="jobName" type="text" placeholder="e.g. Smith Dock Repair" autocomplete="off" />
+      </label>
+
+      <label class="field">
+        <span>Notes</span>
+        <textarea id="jobNotes" rows="3" placeholder="Optional notes"></textarea>
+      </label>
+
+      <button id="mainButton" class="primary-button" disabled>
+        <span id="mainButtonIcon">▶</span>
+        <span id="mainButtonText">Start Job</span>
+      </button>
+
+      <p class="helper" id="helperText">Enter a job name to start the timer.</p>
+    </section>
+
+    <section class="history-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">HISTORY</p>
+          <h2>Saved Jobs</h2>
+        </div>
+        <button id="clearAllButton" class="text-button" hidden>Clear all</button>
+      </div>
+
+      <div id="emptyState" class="empty-state">
+        <div class="empty-icon">◷</div>
+        <strong>No jobs yet</strong>
+        <span>Completed jobs will appear here.</span>
+      </div>
+
+      <div id="jobList" class="job-list"></div>
+    </section>
+  </main>
+
+  <template id="jobTemplate">
+    <article class="job-card">
+      <div class="job-card-top">
+        <div>
+          <h3 class="job-title"></h3>
+          <p class="job-date"></p>
+        </div>
+        <div class="job-duration"></div>
+      </div>
+      <p class="job-notes"></p>
+      <button class="delete-button">Delete</button>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
